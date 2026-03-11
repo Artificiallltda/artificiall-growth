@@ -1,6 +1,15 @@
 import { supabase } from '@/lib/supabase';
 
 export default async function PipelinePage() {
+  if (!supabase) {
+    return (
+      <div className="p-8 text-center bg-red-500/10 border border-red-500/20 rounded-xl">
+        <h2 className="text-xl font-bold text-red-400 mb-2">Conexão com Banco de Dados Perdida</h2>
+        <p className="text-slate-400">Verifique as variáveis NEXT_PUBLIC_SUPABASE_URL e NEXT_PUBLIC_SUPABASE_ANON_KEY na Vercel.</p>
+      </div>
+    );
+  }
+
   const { data: leads, error } = await supabase
     .from('leads')
     .select('*')
