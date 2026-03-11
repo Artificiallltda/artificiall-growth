@@ -1,4 +1,15 @@
-export default function PipelinePage() {
+import { supabase } from '@/lib/supabase';
+
+export default async function PipelinePage() {
+  const { data: leads, error } = await supabase
+    .from('leads')
+    .select('*')
+    .order('created_at', { ascending: false });
+
+  const scrapingLeads = leads?.filter(l => l.status === 'Scraping / Identified') || [];
+  const firstContactLeads = leads?.filter(l => l.status === 'First Contact') || [];
+  const closingLeads = leads?.filter(l => l.status === 'Negotiation & Closing') || [];
+
   return (
     <div className="h-[calc(100vh-8rem)] flex flex-col">
       <div className="flex justify-between items-end mb-6">
@@ -21,77 +32,77 @@ export default function PipelinePage() {
         {/* Column 1 */}
         <div className="flex-1 flex flex-col bg-slate-900/50 rounded-2xl border border-white/5 overflow-hidden">
           <div className="p-4 border-b border-white/5 bg-slate-900/80">
-            <h3 className="font-semibold text-slate-200">Scraping / Identified <span className="ml-2 px-2 py-0.5 rounded-full bg-white/10 text-xs">24</span></h3>
+            <h3 className="font-semibold text-slate-200">Scraping / Identified <span className="ml-2 px-2 py-0.5 rounded-full bg-white/10 text-xs">{scrapingLeads.length}</span></h3>
           </div>
           <div className="flex-1 p-3 overflow-y-auto space-y-3 custom-scrollbar">
-            {/* Card */}
-            <div className="bg-[#0f172a] p-4 rounded-xl border border-white/10 hover:border-indigo-500/50 transition-colors cursor-pointer group">
-              <div className="flex justify-between items-start mb-2">
-                <h4 className="text-sm font-bold text-white">TechVision Corp</h4>
-                <span className="text-xs text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded font-medium">B2B SaaS</span>
-              </div>
-              <p className="text-xs text-slate-400 mb-3">Identified by @arth-sdr via LinkedIn Sales Nav API.</p>
-              <div className="flex justify-between items-center text-xs">
-                <div className="flex -space-x-1">
-                  <div className="w-5 h-5 rounded-full bg-indigo-500 border-2 border-[#0f172a] z-10"></div>
+            {scrapingLeads.map((lead) => (
+              <div key={lead.id} className="bg-[#0f172a] p-4 rounded-xl border border-white/10 hover:border-indigo-500/50 transition-colors cursor-pointer group">
+                <div className="flex justify-between items-start mb-2">
+                  <h4 className="text-sm font-bold text-white">{lead.company_name}</h4>
+                  {lead.rating && (
+                    <span className="text-xs text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded font-medium">{lead.rating} ★</span>
+                  )}
                 </div>
-                <span className="text-slate-500">2h ago</span>
-              </div>
-            </div>
-            {/* Card */}
-            <div className="bg-[#0f172a] p-4 rounded-xl border border-white/10 hover:border-indigo-500/50 transition-colors cursor-pointer">
-              <div className="flex justify-between items-start mb-2">
-                <h4 className="text-sm font-bold text-white">Global Retail Inc</h4>
-                <span className="text-xs text-teal-400 bg-teal-500/10 px-2 py-0.5 rounded font-medium">Retail</span>
-              </div>
-              <p className="text-xs text-slate-400 mb-3">High ICP match based on Agentic Readiness parameters.</p>
-              <div className="flex justify-between items-center text-xs">
-                <div className="flex -space-x-1">
-                  <div className="w-5 h-5 rounded-full bg-indigo-500 border-2 border-[#0f172a] z-10"></div>
+                <p className="text-xs text-slate-400 mb-3 line-clamp-2">
+                  {lead.address || lead.website || 'No details available'}
+                </p>
+                <div className="flex justify-between items-center text-xs">
+                  <div className="flex -space-x-1">
+                    <div className="w-5 h-5 rounded-full bg-indigo-500 border-2 border-[#0f172a] z-10 flex items-center justify-center text-[10px] text-white">
+                      {lead.source?.[0] || 'L'}
+                    </div>
+                  </div>
+                  <span className="text-slate-500">
+                    {new Date(lead.created_at).toLocaleDateString()}
+                  </span>
                 </div>
-                <span className="text-slate-500">4h ago</span>
               </div>
-            </div>
+            ))}
           </div>
         </div>
 
         {/* Column 2 */}
         <div className="flex-1 flex flex-col bg-slate-900/50 rounded-2xl border border-white/5 overflow-hidden">
           <div className="p-4 border-b border-white/5 bg-slate-900/80">
-            <h3 className="font-semibold text-slate-200">First Contact <span className="ml-2 px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 text-xs">8</span></h3>
+            <h3 className="font-semibold text-slate-200">First Contact <span className="ml-2 px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 text-xs">{firstContactLeads.length}</span></h3>
           </div>
           <div className="flex-1 p-3 overflow-y-auto space-y-3">
-             <div className="bg-[#0f172a] p-4 rounded-xl border border-indigo-500/30">
-              <div className="flex justify-between items-start mb-2">
-                <h4 className="text-sm font-bold text-white">NexGen Services</h4>
+            {firstContactLeads.map((lead) => (
+              <div key={lead.id} className="bg-[#0f172a] p-4 rounded-xl border border-indigo-500/30">
+                <div className="flex justify-between items-start mb-2">
+                  <h4 className="text-sm font-bold text-white">{lead.company_name}</h4>
+                </div>
+                <p className="text-xs text-slate-400 mb-3">Initiated contact via {lead.source}.</p>
+                <div className="mt-2 text-xs font-mono text-emerald-400 bg-emerald-400/10 p-2 rounded">
+                  &gt; Status: Awaiting Reply
+                </div>
               </div>
-              <p className="text-xs text-slate-400 mb-3">InMail sent. Highly personalized message focusing on AI constraints.</p>
-              <div className="mt-2 text-xs font-mono text-emerald-400 bg-emerald-400/10 p-2 rounded">
-                &gt; Status: Awaiting Reply
-              </div>
-            </div>
+            ))}
           </div>
         </div>
 
         {/* Column 3 */}
         <div className="flex-1 flex flex-col bg-slate-900/50 rounded-2xl border border-white/5 overflow-hidden">
           <div className="p-4 border-b border-white/5 bg-slate-900/80">
-            <h3 className="font-semibold text-slate-200">Negotiation & Closing <span className="ml-2 px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 text-xs">2</span></h3>
+            <h3 className="font-semibold text-slate-200">Negotiation & Closing <span className="ml-2 px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 text-xs">{closingLeads.length}</span></h3>
           </div>
           <div className="flex-1 p-3 overflow-y-auto space-y-3">
-             <div className="bg-[#0f172a] p-4 rounded-xl border border-purple-500/30 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-10 h-10 bg-purple-500/20 rounded-bl-full blur-md"></div>
-              <div className="flex justify-between items-start mb-2">
-                <h4 className="text-sm font-bold text-white">Alpha Finance</h4>
+            {closingLeads.map((lead) => (
+              <div key={lead.id} className="bg-[#0f172a] p-4 rounded-xl border border-purple-500/30 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-10 h-10 bg-purple-500/20 rounded-bl-full blur-md"></div>
+                <div className="flex justify-between items-start mb-2">
+                  <h4 className="text-sm font-bold text-white">{lead.company_name}</h4>
+                </div>
+                <p className="text-xs text-slate-400 mb-2">Lead in final negotiation phase.</p>
+                <button className="w-full mt-2 text-xs font-medium px-3 py-1.5 bg-white/5 hover:bg-white/10 text-white rounded transition-colors border border-white/10">
+                  Review Proposal
+                </button>
               </div>
-              <p className="text-xs text-slate-400 mb-2">@arth-closer generated technical PDF proposal. Answering objections.</p>
-              <button className="w-full mt-2 text-xs font-medium px-3 py-1.5 bg-white/5 hover:bg-white/10 text-white rounded transition-colors border border-white/10">
-                Review Proposal
-              </button>
-            </div>
+            ))}
           </div>
         </div>
       </div>
     </div>
   );
 }
+
