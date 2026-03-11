@@ -15,9 +15,9 @@ export default async function PipelinePage() {
     .select('*')
     .order('created_at', { ascending: false });
 
-  const scrapingLeads = leads?.filter(l => l.status === 'Scraping / Identified') || [];
-  const firstContactLeads = leads?.filter(l => l.status === 'First Contact') || [];
-  const closingLeads = leads?.filter(l => l.status === 'Negotiation & Closing') || [];
+  const scrapingLeads = leads?.filter((l: any) => l.status === 'Scraping / Identified') || [];
+  const firstContactLeads = leads?.filter((l: any) => l.status === 'First Contact') || [];
+  const closingLeads = leads?.filter((l: any) => l.status === 'Negotiation & Closing') || [];
 
   return (
     <div className="h-[calc(100vh-8rem)] flex flex-col">
@@ -44,7 +44,7 @@ export default async function PipelinePage() {
             <h3 className="font-semibold text-slate-200">Scraping / Identified <span className="ml-2 px-2 py-0.5 rounded-full bg-white/10 text-xs">{scrapingLeads.length}</span></h3>
           </div>
           <div className="flex-1 p-3 overflow-y-auto space-y-3 custom-scrollbar">
-            {scrapingLeads.map((lead) => (
+            {scrapingLeads.map((lead: any) => (
               <div key={lead.id} className="bg-[#0f172a] p-4 rounded-xl border border-white/10 hover:border-indigo-500/50 transition-colors cursor-pointer group">
                 <div className="flex justify-between items-start mb-2">
                   <h4 className="text-sm font-bold text-white">{lead.company_name}</h4>
@@ -76,7 +76,7 @@ export default async function PipelinePage() {
             <h3 className="font-semibold text-slate-200">First Contact <span className="ml-2 px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 text-xs">{firstContactLeads.length}</span></h3>
           </div>
           <div className="flex-1 p-3 overflow-y-auto space-y-3">
-            {firstContactLeads.map((lead) => (
+            {firstContactLeads.map((lead: any) => (
               <div key={lead.id} className="bg-[#0f172a] p-4 rounded-xl border border-indigo-500/30">
                 <div className="flex justify-between items-start mb-2">
                   <h4 className="text-sm font-bold text-white">{lead.company_name}</h4>
@@ -96,7 +96,7 @@ export default async function PipelinePage() {
             <h3 className="font-semibold text-slate-200">Negotiation & Closing <span className="ml-2 px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 text-xs">{closingLeads.length}</span></h3>
           </div>
           <div className="flex-1 p-3 overflow-y-auto space-y-3">
-            {closingLeads.map((lead) => (
+            {closingLeads.map((lead: any) => (
               <div key={lead.id} className="bg-[#0f172a] p-4 rounded-xl border border-purple-500/30 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-10 h-10 bg-purple-500/20 rounded-bl-full blur-md"></div>
                 <div className="flex justify-between items-start mb-2">
