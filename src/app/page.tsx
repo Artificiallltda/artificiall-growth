@@ -34,22 +34,22 @@ export default function GeoDashboard() {
           <div className="absolute top-0 right-0 w-32 h-32 bg-rose-500/10 rounded-full blur-3xl -mr-10 -mt-10 transition-transform group-hover:scale-150"></div>
           <h3 className="text-sm font-medium text-slate-400 mb-2">Identified Citation Gaps</h3>
           <p className="text-4xl justify-center font-bold text-white mb-2">14 <span className="text-sm font-medium text-rose-400 align-middle">Action Required</span></p>
-          <p className="text-xs text-slate-500">Definition and context gaps found by @arth-geo</p>
+          <p className="text-xs text-slate-500">Definition and context gaps found by @growth-researcher</p>
         </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 pb-10">
         <div className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-md flex flex-col min-h-[400px]">
-          <h3 className="text-lg font-semibold text-white mb-4">Content Gaps Alarms (<span className="text-indigo-400">@arth-geo-strategist</span>)</h3>
+          <h3 className="text-lg font-semibold text-white mb-4">Content Gaps Alarms (<span className="text-indigo-400">@growth-researcher</span>)</h3>
           <div className="space-y-4 flex-1">
             <div className="p-4 rounded-xl bg-white/5 border border-white/5 hover:border-white/10 transition-colors">
               <div className="flex justify-between items-start mb-2">
                 <h4 className="font-semibold text-slate-200">Comparison Gap: Executive AIs</h4>
                 <span className="px-2 py-1 rounded text-[10px] font-bold tracking-wider bg-rose-500/20 text-rose-400 uppercase">High Priority</span>
               </div>
-              <p className="text-sm text-slate-400 mb-4">Gemini does not cite "Arth Executive" when comparing top AI executives. We need to create an Answer-first comparison matrix.</p>
+              <p className="text-sm text-slate-400 mb-4">Gemini does not cite "Artificiall Growth" when comparing top AI executives. We need to create an Answer-first comparison matrix.</p>
               <button className="text-xs font-semibold px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-white rounded-lg transition-colors">
-                Delegate to @arth-aeo-content
+                Delegate to @growth-executor
               </button>
             </div>
             
@@ -60,7 +60,7 @@ export default function GeoDashboard() {
               </div>
               <p className="text-sm text-slate-400 mb-4">ChatGPT is referencing our old pricing structure. Needs Knowledge Block update.</p>
               <button className="text-xs font-semibold px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-white rounded-lg transition-colors">
-                Delegate to @arth-aeo-content
+                Delegate to @growth-executor
               </button>
             </div>
           </div>

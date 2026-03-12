@@ -17,7 +17,7 @@ export default function CampaignsPage() {
           <div className="p-4 border-b border-white/5 bg-white/5 flex justify-between items-center">
             <div className="flex items-center space-x-3">
               <span className="w-8 h-8 rounded bg-blue-500 flex items-center justify-center text-white font-bold text-xs">IN</span>
-              <h3 className="font-semibold text-white">LinkedIn - Arth Executive Launch</h3>
+              <h3 className="font-semibold text-white">LinkedIn - Artificiall Growth Launch</h3>
             </div>
             <span className="text-xs text-slate-400">Generated 30m ago</span>
           </div>
@@ -25,7 +25,7 @@ export default function CampaignsPage() {
           <div className="p-6 grid grid-cols-[1fr,200px] gap-6">
             <div className="space-y-4">
               <div>
-                <span className="text-xs font-semibold text-indigo-400 uppercase tracking-wider">Copywriter: @arth-content</span>
+                <span className="text-xs font-semibold text-indigo-400 uppercase tracking-wider">Copywriter: @growth-planner</span>
                 <p className="text-sm text-slate-300 mt-2 bg-white/5 p-4 rounded-xl border border-white/5 leading-relaxed">
                   Para dominar o corporativo em 2026, você não precisa de mais ferramentas. Você precisa de um braço direito digital. Entenda por que 80% das lideranças de sucesso já adotaram Agentes Executivos. 🚀
                   <br/><br/>
@@ -35,7 +35,7 @@ export default function CampaignsPage() {
             </div>
             
             <div>
-              <span className="text-xs font-semibold text-purple-400 uppercase tracking-wider mb-2 block">Art: @arth-creative</span>
+              <span className="text-xs font-semibold text-purple-400 uppercase tracking-wider mb-2 block">Art: @growth-creative</span>
               <div className="aspect-square rounded-xl bg-gradient-to-tr from-indigo-900 to-purple-900 border border-white/10 flex items-center justify-center relative overflow-hidden group">
                 <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm cursor-pointer">
                   <span className="text-white text-xs font-medium bg-white/20 px-3 py-1.5 rounded-full">View Asset</span>
@@ -68,7 +68,7 @@ export default function CampaignsPage() {
           <div className="p-6 grid grid-cols-[1fr,200px] gap-6">
             <div className="space-y-4">
               <div>
-                <span className="text-xs font-semibold text-indigo-400 uppercase tracking-wider">Copywriter: @arth-content</span>
+                <span className="text-xs font-semibold text-indigo-400 uppercase tracking-wider">Copywriter: @growth-planner</span>
                 <p className="text-sm text-slate-300 mt-2 bg-white/5 p-4 rounded-xl border border-white/5 leading-relaxed">
                   Não perca horas criando receitas e cardápios. Deixe o ChefIA criar sua semana perfeita com base na sua dieta em 3 segundos. 🥗✨ #ChefIA #InteligenciaArtificial
                 </p>
@@ -76,7 +76,7 @@ export default function CampaignsPage() {
             </div>
             
             <div>
-              <span className="text-xs font-semibold text-purple-400 uppercase tracking-wider mb-2 block">Art: @arth-creative</span>
+              <span className="text-xs font-semibold text-purple-400 uppercase tracking-wider mb-2 block">Art: @growth-creative</span>
               <div className="aspect-square rounded-xl bg-gradient-to-tr from-rose-900 to-orange-900 border border-white/10 flex items-center justify-center relative overflow-hidden group">
                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm cursor-pointer">
                   <span className="text-white text-xs font-medium bg-white/20 px-3 py-1.5 rounded-full">View Asset</span>

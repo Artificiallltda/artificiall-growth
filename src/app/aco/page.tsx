@@ -49,7 +49,7 @@ export default function AcoMonitorPage() {
 
       <div className="bg-slate-900/50 border border-white/10 rounded-2xl overflow-hidden">
         <div className="p-5 border-b border-white/5 bg-slate-900">
-          <h3 className="text-lg font-semibold text-white">Trust & Actionability Log (@arth-commerce)</h3>
+          <h3 className="text-lg font-semibold text-white">Trust & Actionability Log (@growth-commerce)</h3>
         </div>
         
         <div className="divide-y divide-white/5">
@@ -59,7 +59,7 @@ export default function AcoMonitorPage() {
                 ✓
               </div>
               <div>
-                <h4 className="font-semibold text-slate-200">Arth Executive Product Schema</h4>
+                <h4 className="font-semibold text-slate-200">Artificiall Growth Product Schema</h4>
                 <p className="text-sm text-slate-400 mt-1">Computable constraints and pricing rules verified by Operator Agents.</p>
               </div>
             </div>

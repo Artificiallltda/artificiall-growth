@@ -26,7 +26,7 @@ export default function Sidebar() {
       <div className="p-4 border-t border-white/5">
         <div className="flex items-center space-x-3 px-2">
           <div className="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-xs font-bold shadow-lg shadow-indigo-500/20">
-            AR
+            AG
           </div>
           <div>
             <p className="text-sm font-medium text-white">Administrator</p>
