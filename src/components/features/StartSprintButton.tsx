@@ -15,21 +15,22 @@ export default function StartSprintButton() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          agent_id: '@arth-sdr-agent',
-          command: '*scan-mercado "empresas de tecnologia"',
+          agent_id: '@growth-sdr',
+          command: 'Realize uma varredura por CEOs de imobiliárias de alto padrão em Balneário Camboriú agora.',
           user_id: 'dashboard_admin'
         }),
-      });
+        });
 
-      if (response.ok) {
+        if (response.ok) {
         alert('🚀 Sprint de Prospecção Iniciada com Sucesso!');
-      } else {
+        } else {
         alert('❌ Falha ao iniciar sprint. Verifique o backend.');
-      }
-    } catch (error) {
-      console.error('Error triggering agent:', error);
-      alert('❌ Erro de conexão com o Railway.');
-    } finally {
+        }
+        } catch (error) {
+        console.error('Error triggering agent:', error);
+        alert('❌ Erro de conexão com o Railway.');
+        } finally {
+
       setLoading(false);
     }
   };
