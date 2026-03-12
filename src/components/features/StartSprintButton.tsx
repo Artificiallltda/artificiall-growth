@@ -9,7 +9,7 @@ export default function StartSprintButton() {
     setLoading(true);
     // DEBUG: Mostra no console o que está acontecendo
     const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://artificiall-aios-engine-production.up.railway.app';
-    const endpoint = `${backendUrl}/api/v1/trigger`;
+    const endpoint = `${backendUrl}/trigger`;
     
     console.log("🚀 [DEBUG] Iniciando Sprint...");
     console.log("📡 [DEBUG] Endpoint:", endpoint);
