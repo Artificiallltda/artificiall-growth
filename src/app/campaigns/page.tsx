@@ -1,3 +1,5 @@
+import TriggerAgentButton from '@/components/features/TriggerAgentButton';
+
 export default function CampaignsPage() {
   return (
     <div className="space-y-6">
@@ -21,7 +23,7 @@ export default function CampaignsPage() {
             </div>
             <span className="text-xs text-slate-400">Generated 30m ago</span>
           </div>
-          
+
           <div className="p-6 grid grid-cols-[1fr,200px] gap-6">
             <div className="space-y-4">
               <div>
@@ -33,7 +35,7 @@ export default function CampaignsPage() {
                 </p>
               </div>
             </div>
-            
+
             <div>
               <span className="text-xs font-semibold text-purple-400 uppercase tracking-wider mb-2 block">Art: @growth-creative</span>
               <div className="aspect-square rounded-xl bg-gradient-to-tr from-indigo-900 to-purple-900 border border-white/10 flex items-center justify-center relative overflow-hidden group">
@@ -46,12 +48,20 @@ export default function CampaignsPage() {
           </div>
 
           <div className="p-4 border-t border-white/5 bg-white/5 flex justify-end space-x-3">
-            <button className="px-4 py-2 bg-transparent hover:bg-white/5 text-slate-300 text-sm font-medium rounded-lg transition-colors">
-              Reject & Regenerate
-            </button>
-            <button className="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 shadow-lg shadow-indigo-500/20 text-white text-sm font-bold rounded-lg transition-all">
-              Approve & Publish
-            </button>
+            <TriggerAgentButton 
+              agentId="@growth-planner"
+              command="REJEITADO: Refaça o copy para a campanha do LinkedIn, foque mais em ROI direto e menos em teoria."
+              label="Reject & Regenerate"
+              variant="outline"
+              successMessage="Solicitação de reformulação enviada ao @growth-planner."
+            />
+            <TriggerAgentButton 
+              agentId="@growth-manager"
+              command="APROVADO: Publique a campanha LinkedIn - Artificiall Growth Launch imediatamente."
+              label="Approve & Publish"
+              variant="primary"
+              successMessage="Campanha aprovada! O @growth-manager iniciou o processo de publicação."
+            />
           </div>
         </div>
 
@@ -64,7 +74,7 @@ export default function CampaignsPage() {
             </div>
             <span className="text-xs text-slate-400">Generated 1h ago</span>
           </div>
-          
+
           <div className="p-6 grid grid-cols-[1fr,200px] gap-6">
             <div className="space-y-4">
               <div>
@@ -74,25 +84,33 @@ export default function CampaignsPage() {
                 </p>
               </div>
             </div>
-            
+
             <div>
               <span className="text-xs font-semibold text-purple-400 uppercase tracking-wider mb-2 block">Art: @growth-creative</span>
               <div className="aspect-square rounded-xl bg-gradient-to-tr from-rose-900 to-orange-900 border border-white/10 flex items-center justify-center relative overflow-hidden group">
                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm cursor-pointer">
                   <span className="text-white text-xs font-medium bg-white/20 px-3 py-1.5 rounded-full">View Asset</span>
                 </div>
-                <span className="text-4xl">🍳</span>
+                <span className="text-4xl">🥗</span>
               </div>
             </div>
           </div>
 
           <div className="p-4 border-t border-white/5 bg-white/5 flex justify-end space-x-3">
-            <button className="px-4 py-2 bg-transparent hover:bg-white/5 text-slate-300 text-sm font-medium rounded-lg transition-colors">
-              Reject & Regenerate
-            </button>
-            <button className="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 shadow-lg shadow-indigo-500/20 text-white text-sm font-bold rounded-lg transition-all">
-              Approve & Publish
-            </button>
+            <TriggerAgentButton 
+              agentId="@growth-planner"
+              command="REJEITADO: Refaça o conteúdo para Instagram, use um tom mais descontraído e focado em bem-estar."
+              label="Reject & Regenerate"
+              variant="outline"
+              successMessage="Solicitação de reformulação enviada ao @growth-planner."
+            />
+            <TriggerAgentButton 
+              agentId="@growth-manager"
+              command="APROVADO: Publique os criativos do ChefIA no Instagram agora."
+              label="Approve & Publish"
+              variant="primary"
+              successMessage="Campanha aprovada! O @growth-manager iniciou o processo de publicação."
+            />
           </div>
         </div>
       </div>

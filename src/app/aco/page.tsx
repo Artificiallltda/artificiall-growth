@@ -1,3 +1,5 @@
+import TriggerAgentButton from '@/components/features/TriggerAgentButton';
+
 export default function AcoMonitorPage() {
   return (
     <div className="space-y-6">
@@ -7,9 +9,13 @@ export default function AcoMonitorPage() {
           <p className="text-slate-400">Agentic Commerce Optimization Diagnostics</p>
         </div>
         <div>
-          <button className="px-4 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-lg text-sm font-medium text-white transition-colors">
-            Run Full Scan
-          </button>
+          <TriggerAgentButton 
+            agentId="@growth-commerce"
+            command="Realize um Scan completo de ACO no site e verifique a compatibilidade de agentes e dados estruturados."
+            label="Run Full Scan"
+            variant="secondary"
+            successMessage="Scan ACO iniciado! O @growth-commerce está auditando o ecossistema."
+          />
         </div>
       </div>
 
@@ -51,7 +57,7 @@ export default function AcoMonitorPage() {
         <div className="p-5 border-b border-white/5 bg-slate-900">
           <h3 className="text-lg font-semibold text-white">Trust & Actionability Log (@growth-commerce)</h3>
         </div>
-        
+
         <div className="divide-y divide-white/5">
           <div className="p-5 flex items-center justify-between hover:bg-white/5 transition-colors">
             <div className="flex items-start space-x-4">
@@ -89,9 +95,13 @@ export default function AcoMonitorPage() {
                 <p className="text-sm text-slate-400 mt-1">Missing machine-readable refund policy in knowledge graph. Might cause trust issues for agents.</p>
               </div>
             </div>
-            <button className="text-xs font-semibold px-3 py-1.5 bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 rounded transition-colors border border-amber-500/20">
-              Fix Schema
-            </button>
+            <TriggerAgentButton 
+              agentId="@growth-commerce"
+              command="Corrija o Schema de Policy Graph para o ChefIA, garantindo que as políticas de reembolso sejam legíveis por máquinas (JSON-LD)."
+              label="Fix Schema"
+              variant="amber"
+              successMessage="Solicitação de correção de Schema enviada!"
+            />
           </div>
         </div>
       </div>
