@@ -7,13 +7,23 @@ export default function StartSprintButton() {
 
   const startSprint = async () => {
     setLoading(true);
-    // DEBUG: Mostra no console o que está acontecendo
-    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://artificiall-aios-engine-production.up.railway.app';
+    
+    // Pega a URL da variável ou usa o fallback
+    let backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://artificiall-aios-engine-production.up.railway.app';
+    
+    // BLINDAGEM: Garante que a URL comece com https:// para o navegador não achar que é relativa
+    if (!backendUrl.startsWith('http')) {
+      backendUrl = `https://${backendUrl}`;
+    }
+
+    // Remove barras duplicadas ou prefixos antigos se vierem na variável
+    backendUrl = backendUrl.replace(/\/api\/v1\/?$/, '').replace(/\/$/, '');
+    
     const endpoint = `${backendUrl}/trigger`;
     
     console.log("🚀 [DEBUG] Iniciando Sprint...");
-    console.log("📡 [DEBUG] Endpoint:", endpoint);
-    console.log("🤖 [DEBUG] Agente: @growth-sdr");
+    console.log("📡 [DEBUG] Backend URL Base:", backendUrl);
+    console.log("🔗 [DEBUG] Endpoint Final:", endpoint);
 
     try {
       const response = await fetch(endpoint, {
