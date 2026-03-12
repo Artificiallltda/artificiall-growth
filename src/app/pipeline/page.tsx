@@ -1,11 +1,12 @@
 import { supabase } from '@/lib/supabase';
+import StartSprintButton from '@/components/features/StartSprintButton';
 
 export default async function PipelinePage() {
   if (!supabase) {
     return (
       <div className="p-8 text-center bg-red-500/10 border border-red-500/20 rounded-xl">
-        <h2 className="text-xl font-bold text-red-400 mb-2">Conexão com Banco de Dados Perdida</h2>
-        <p className="text-slate-400">Verifique as variáveis NEXT_PUBLIC_SUPABASE_URL e NEXT_PUBLIC_SUPABASE_ANON_KEY na Vercel.</p>
+        <h2 className="text-xl font-bold text-red-400 mb-2">ConexÃ£o com Banco de Dados Perdida</h2>
+        <p className="text-slate-400">Verifique as variÃ¡veis NEXT_PUBLIC_SUPABASE_URL e NEXT_PUBLIC_SUPABASE_ANON_KEY na Vercel.</p>
       </div>
     );
   }
@@ -27,13 +28,10 @@ export default async function PipelinePage() {
           <p className="text-slate-400">Autonomous SDR & Closer Kanban Board</p>
         </div>
         <div className="flex space-x-2">
-          <button className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm font-medium text-slate-300 hover:bg-white/10 transition-colors">
+          <button className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm font-medium text-slate-300 hover:bg-white/10 transition-colors">  
             Configure ICP
           </button>
-          <button className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 rounded-lg text-sm font-medium text-white shadow-lg shadow-indigo-500/20 transition-all flex items-center">
-            <span className="w-2 h-2 rounded-full bg-white animate-pulse mr-2"></span>
-            Start Sprint (@arth-sdr)
-          </button>
+          <StartSprintButton />
         </div>
       </div>
 
@@ -49,7 +47,7 @@ export default async function PipelinePage() {
                 <div className="flex justify-between items-start mb-2">
                   <h4 className="text-sm font-bold text-white">{lead.company_name}</h4>
                   {lead.rating && (
-                    <span className="text-xs text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded font-medium">{lead.rating} ★</span>
+                    <span className="text-xs text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded font-medium">{lead.rating} â˜…</span>
                   )}
                 </div>
                 <p className="text-xs text-slate-400 mb-3 line-clamp-2">
@@ -114,4 +112,3 @@ export default async function PipelinePage() {
     </div>
   );
 }
-
