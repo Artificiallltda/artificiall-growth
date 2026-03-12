@@ -7,12 +7,16 @@ export default function StartSprintButton() {
 
   const startSprint = async () => {
     setLoading(true);
+    // DEBUG: Mostra no console o que está acontecendo
+    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://artificiall-aios-engine-production.up.railway.app';
+    const endpoint = `${backendUrl}/api/v1/trigger`;
+    
+    console.log("🚀 [DEBUG] Iniciando Sprint...");
+    console.log("📡 [DEBUG] Endpoint:", endpoint);
+    console.log("🤖 [DEBUG] Agente: @growth-sdr");
+
     try {
-      // Força o uso da URL de produção se a variável de ambiente não estiver disponível
-      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://artificiall-aios-engine-production.up.railway.app';
-      
-      // Ajuste: O endpoint correto no FastAPI com o prefixo do router é /api/v1/trigger
-      const response = await fetch(`${backendUrl}/api/v1/trigger`, {
+      const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -24,14 +28,18 @@ export default function StartSprintButton() {
         }),
       });
 
+      console.log("📥 [DEBUG] Resposta status:", response.status);
+
       if (response.ok) {
         alert('🚀 Sprint de Prospecção Iniciada com Sucesso!');
       } else {
-        alert('❌ Falha ao iniciar sprint. Verifique o backend.');
+        const errData = await response.json().catch(() => ({}));
+        console.error("❌ [DEBUG] Erro no Backend:", errData);
+        alert(`❌ Falha ao iniciar sprint (Status ${response.status}). Verifique o console.`);
       }
     } catch (error) {
-      console.error('Error triggering agent:', error);
-      alert('❌ Erro de conexão com o Railway.');
+      console.error('❌ [DEBUG] Erro de Conexão:', error);
+      alert('❌ Erro de conexão com o Railway. Veja o console (F12).');
     } finally {
       setLoading(false);
     }
