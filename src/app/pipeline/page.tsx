@@ -1,12 +1,12 @@
 import { supabase } from '@/lib/supabase';
-import StartSprintButton from '@/components/features/StartSprintButton';
+import SprintControl from '@/components/features/SprintControl';
 
 export default async function PipelinePage() {
   if (!supabase) {
     return (
       <div className="p-8 text-center bg-red-500/10 border border-red-500/20 rounded-xl">
-        <h2 className="text-xl font-bold text-red-400 mb-2">ConexÃ£o com Banco de Dados Perdida</h2>
-        <p className="text-slate-400">Verifique as variÃ¡veis NEXT_PUBLIC_SUPABASE_URL e NEXT_PUBLIC_SUPABASE_ANON_KEY na Vercel.</p>
+        <h2 className="text-xl font-bold text-red-400 mb-2">Conexão com Banco de Dados Perdida</h2>
+        <p className="text-slate-400">Verifique as variáveis NEXT_PUBLIC_SUPABASE_URL e NEXT_PUBLIC_SUPABASE_ANON_KEY na Vercel.</p>
       </div>
     );
   }
@@ -21,21 +21,19 @@ export default async function PipelinePage() {
   const closingLeads = leads?.filter((l: any) => l.status === 'Negotiation & Closing') || [];
 
   return (
-    <div className="h-[calc(100vh-8rem)] flex flex-col">
-      <div className="flex justify-between items-end mb-6">
+    <div className="h-full flex flex-col space-y-6 pb-10">
+      <div className="flex justify-between items-end mb-2">
         <div>
           <h1 className="text-3xl font-extrabold tracking-tight text-white mb-1">Pipeline Agentico</h1>
           <p className="text-slate-400">Autonomous SDR & Closer Kanban Board</p>
         </div>
-        <div className="flex space-x-2">
-          <button className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm font-medium text-slate-300 hover:bg-white/10 transition-colors">  
-            Configure ICP
-          </button>
-          <StartSprintButton />
-        </div>
       </div>
 
-      <div className="flex-1 flex space-x-6 overflow-hidden">
+      {/* NOVO CONTROLE DE SPRINT INTEGRADO */}
+      <SprintControl />
+
+      <div className="flex-1 flex space-x-6 min-h-[600px]">
+
         {/* Column 1 */}
         <div className="flex-1 flex flex-col bg-slate-900/50 rounded-2xl border border-white/5 overflow-hidden">
           <div className="p-4 border-b border-white/5 bg-slate-900/80">
